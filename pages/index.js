@@ -1,21 +1,15 @@
-import Head from "next/head";
-import { Header } from "../components";
+import { HeroBanner } from "../components";
+import { IoDiamondOutline } from "react-icons/io5";
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Luxury Diamond Jewellery - HaWa & co.</title>
-        <meta
-          name="description"
-          content="Luxury Diamond Jewellery, Accessories and Gifts - HaWa & co."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-brown-dark font-Lora">
-        HaWa & co.
-      </h1>
+      <HeroBanner />
+      <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center">
+        <IoDiamondOutline className="w-7 h-7" />
+        <h2 className="text-4xl font-Lora font-extrabold">Best Seller</h2>
+        <p>Perhiasan terpopuler bulan ini</p>
+      </div>
     </div>
   );
 }

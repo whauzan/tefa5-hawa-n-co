@@ -1,28 +1,39 @@
-import Head from "next/head";
-import { Header } from "../components";
-import Card from "../components/card";
+import { Card, HeroBanner } from "../components";
+import { IoDiamondOutline } from "react-icons/io5";
+import { client } from "../lib/client";
 
-
-export default function Home() {
+export default function Home({ products, banners }) {
   return (
     <div>
-      <Head>
-        <title>Luxury Diamond Jewellery - HaWa & co.</title>
-        <meta
-          name="description"
-          content="Luxury Diamond Jewellery, Accessories and Gifts - HaWa & co."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-brown-dark font-Lora">
-        HaWa & co.
-        <Card
-            image=""
-            title="Ring-o"
-            price="Rp 200.000"
-          /> 
-      </h1>
+      <HeroBanner />
+      <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center">
+        <IoDiamondOutline className="w-7 h-7" />
+        <h2 className="text-4xl font-Lora font-extrabold">Best Seller</h2>
+        <p>Perhiasan terpopuler bulan ini</p>
+      </div>
+      <div className="flex flex-wrap justify-center gap-4 mt-5 w-full">
+        {products
+          .filter((product) => product.bestseller)
+          .map((product) => (
+            <Card
+              key={product._id}
+              image={product.image}
+              title={product.name}
+              price={product.price}
+            />
+          ))}
+      </div>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const products = await client.fetch(`*[_type == "product"]`);
+  const banners = await client.fetch(`*[_type == "banner"]`);
+  return {
+    props: {
+      products,
+      banners,
+    },
+  };
+};

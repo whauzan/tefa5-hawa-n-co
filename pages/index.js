@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { Header } from "../components";
+import Card from "../components/card";
+
 
 export default function Home() {
   return (
@@ -15,6 +17,11 @@ export default function Home() {
       <Header />
       <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-brown-dark font-Lora">
         HaWa & co.
+        <Card
+            image=""
+            title="Ring-o"
+            price="Rp 200.000"
+          /> 
       </h1>
     </div>
   );

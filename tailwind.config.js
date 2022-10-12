@@ -13,6 +13,10 @@ module.exports = {
         "brown-primary": "#a17359",
         "green-pastel": "#817a5e",
       },
+      fontFamily: {
+        Lora: ["Lora", "serif"],
+        Sen: ["Sen", "sans-serif"],
+      }
     },
   },
   plugins: [],

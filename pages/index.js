@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-brown-dark">
+      <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-brown-dark font-Lora">
         HaWa & co.
       </h1>
     </div>

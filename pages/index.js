@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Header } from "../components";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <h1 className="h-screen flex justify-center items-center font-semibold text-7xl text-red-400">
         HaWa & co.
       </h1>

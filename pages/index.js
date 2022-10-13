@@ -5,13 +5,13 @@ import { client } from "../lib/client";
 export default function Home({ products, banners }) {
   return (
     <div>
-      <HeroBanner />
-      <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center">
+      <HeroBanner banners={banners[0]} />
+      <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center mt-10">
         <IoDiamondOutline className="w-7 h-7" />
         <h2 className="text-4xl font-Lora font-extrabold">Best Seller</h2>
         <p>Perhiasan terpopuler bulan ini</p>
       </div>
-      <div className="flex flex-wrap justify-center gap-4 mt-5 w-full">
+      <div className="flex flex-wrap justify-center gap-4 my-5 w-full">
         {products
           .filter((product) => product.bestseller)
           .map((product) => (

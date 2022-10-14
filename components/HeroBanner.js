@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import React from 'react'
-import { urlFor } from '../lib/client';
+import Link from "next/link";
+import React from "react";
+import { urlFor } from "../lib/client";
 
 export default function HeroBanner({ banners }) {
   return (
@@ -20,12 +20,14 @@ export default function HeroBanner({ banners }) {
           height={1080}
         />
       </div>
-      <Link href={`/product/${banners.product}`}>
-        <button className='bg-brown-dark hover:bg-brown-light px-5 py-2 rounded-xl text-brown-light hover:text-brown-dark text-lg mt-10 cursor-pointer'>{banners.buttonText}</button>
+      <Link href={`/product/${banners.product.toLowerCase()}`}>
+        <button className="bg-brown-dark hover:bg-brown-light px-5 py-2 rounded-xl text-brown-light hover:text-brown-dark text-lg mt-10 cursor-pointer">
+          {banners.buttonText}
+        </button>
       </Link>
       <div className="absolute bottom-[5%] right-[10%] w-80 flex flex-col text-brown-dark">
-        <h5 className='mb-3 font-semibold self-end'>Description</h5>
-        <p className='font-thin text-brown-primary text-end'>{banners.desc}</p>
+        <h5 className="mb-3 font-semibold self-end">Description</h5>
+        <p className="font-thin text-brown-primary text-end">{banners.desc}</p>
       </div>
     </div>
   );

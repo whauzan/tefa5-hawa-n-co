@@ -8,3 +8,39 @@
 body {
   @apply bg-white font-Sen;
 }
+
+@layer components {
+  .marquee {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .track {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 15s linear infinite;
+    width: 180%;
+  }
+  .track:hover {
+    animation-play-state: paused;
+  }
+
+  @media screen and (max-width: 768px) {
+    .track {
+      animation: marquee 10s linear infinite;
+      width: 550%;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

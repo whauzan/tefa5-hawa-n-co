@@ -17,9 +17,7 @@ export default function Home({ products, banners }) {
           .map((product) => (
             <Card
               key={product._id}
-              image={product.image}
-              title={product.name}
-              price={product.price}
+              product={product}
             />
           ))}
       </div>

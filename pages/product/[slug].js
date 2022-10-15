@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../lib/client";
 import {
-  AiOutlineMinus,
-  AiOutlinePlus,
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
@@ -80,7 +78,7 @@ export default function ProductDetails({ product, products }) {
         </h2>
         <div className="marquee">
           <div className="flex justify-center gap-4 mt-5 track">
-            {products.map((item) => (
+            {products.filter((item) => product.name !== item.name).map((item) => (
               <Card key={item._id} product={item} />
             ))}
           </div>
@@ -112,7 +110,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
     `*[_type == "product" && slug.current == '${slug}'][0]`
   );
 
-  const products = await client.fetch(`*[_type == "product"]`);
+  const products = await client.fetch(`*[_type == "product" && category == '${product.category}']`);
   return {
     props: {
       product,

@@ -17,7 +17,7 @@ function Layout({ children }) {
       <header>
         <Header />
       </header>
-      <main className="max-w-7xl m-auto w-full">{children}</main>
+      <main className="max-w-7xl m-auto w-full mt-20">{children}</main>
       <footer className="absolute w-full left-0">
         <Footer />
       </footer>

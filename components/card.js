@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { urlFor } from "../lib/client";
 
-const Card = ({ product: { title, image, price, slug } }) => {
+const Card = ({ product: { name, image, price, slug } }) => {
   const router = useRouter();
 
   return (
@@ -14,10 +14,10 @@ const Card = ({ product: { title, image, price, slug } }) => {
           src={urlFor(image && image[0])}
           width={1080}
           height={1080}
-          alt={title}
+          alt={name}
         />
       </div>
-      <h1 className="font-semibold text-lg">{title}</h1>
+      <h1 className="font-semibold text-lg">{name}</h1>
       <h3 className="text-base">
         Rp. {price.toString().replace(/(\d)(?=(\d{3})+(?!\d))+/g, "$1.")}
       </h3>

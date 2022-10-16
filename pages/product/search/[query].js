@@ -10,7 +10,12 @@ export default function Search({ products }) {
     <div className="flex flex-col gap-y-12 mt-14 items-center text-center">
       <div className="flex flex-col gap-y-2 items-center text-brown-dark">
         <IoDiamondOutline className="w-7 h-7" />
-        <h2 className="text-2xl md:text-3xl font-Lora font-extrabold">"{query}" <span className="text-brown-primary">({products.length} produk ditemukan)</span></h2>
+        <h2 className="text-2xl md:text-3xl font-Lora font-extrabold">
+          {`"${query}"`}{" "}
+          <span className="text-brown-primary">
+            ({products.length} produk ditemukan)
+          </span>
+        </h2>
       </div>
       <div className="flex flex-wrap justify-center gap-4 mb-5 w-full">
         {products.map((product) => (

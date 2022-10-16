@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="flex justify-center items-start md:flex-row flex-col mb-8 w-full">
         <div className="flex-[1.5] flex flex-col justify-start mr-10">
           <div className="w-48">
-            <Image src={logo.src} width={822} height={264} />
+            <Image src={logo.src} width={822} height={264} alt={"Logo"} />
           </div>
           <p className="font-Lora font-normal text-dimBlack text-[18px] leading-[30.8px] mt-4 max-w-[312px]">
             Luxury Diamond Jewellery, Accessories and Gifts - HaWa & co.

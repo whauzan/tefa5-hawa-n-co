@@ -6,6 +6,8 @@ import ShopingBag from "../public/shopping-bag.webp";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 import Counter from "./Counter";
+import getStripe from "../lib/getStripe";
+import toast from "react-hot-toast";
 
 export default function Cart() {
   const cartRef = useRef();
@@ -17,6 +19,26 @@ export default function Cart() {
     toggleCartItemQuantity,
     removeFromCart,
   } = useStateContext();
+
+  const handleCheckOut = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading("Redirecting...");
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <div
@@ -38,7 +60,7 @@ export default function Cart() {
         {cartItems.length < 1 && (
           <div className="m-10 text-center flex flex-col items-center">
             <div>
-              <img src={ShopingBag.src} />
+              <img src={ShopingBag.src} alt={"Shopping Bag"} />
             </div>
             <h3 className="font-semibold text-lg">Keranjang Anda Kosong</h3>
             <Link href="/">
@@ -59,6 +81,7 @@ export default function Cart() {
                 <img
                   className="w-1/4 h-1/4 rounded-xl bg-brown-light"
                   src={urlFor(item?.image[0])}
+                  alt={item?.name}
                 />
                 <div className="flex flex-col justify-between">
                   <div className="flex justify-between w-52 md:w-[350px] text-xl">
@@ -101,7 +124,10 @@ export default function Cart() {
             <div className="flex justify-center">
               <button
                 className="bg-brown-dark text-brown-light text-xl rounded-lg w-10/12 py-3 mt-6 hover:scale-110 transition-all"
-                onClick={() => setShowCart(false)}
+                onClick={() => {
+                  setShowCart(false);
+                  handleCheckOut();
+                }}
               >
                 Bayar Dengan Stripe
               </button>

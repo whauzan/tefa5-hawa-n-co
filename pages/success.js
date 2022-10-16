@@ -4,7 +4,7 @@ import { runFireworks } from "../lib/utils";
 import { IoBagCheck } from "react-icons/io5";
 import { useRouter } from "next/router";
 
-export default function success() {
+export default function Success() {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
   const router = useRouter();
 

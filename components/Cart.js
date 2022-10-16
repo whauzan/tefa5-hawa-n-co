@@ -60,7 +60,7 @@ export default function Cart() {
         {cartItems.length < 1 && (
           <div className="m-10 text-center flex flex-col items-center">
             <div>
-              <img src={ShopingBag.src} />
+              <img src={ShopingBag.src} alt={"Shopping Bag"} />
             </div>
             <h3 className="font-semibold text-lg">Keranjang Anda Kosong</h3>
             <Link href="/">

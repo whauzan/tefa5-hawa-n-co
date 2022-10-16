@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function cancel() {
+export default function Cancel() {
   const router = useRouter();
 
   return (

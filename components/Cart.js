@@ -6,6 +6,8 @@ import ShopingBag from "../public/shopping-bag.webp";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 import Counter from "./Counter";
+import getStripe from "../lib/getStripe";
+import toast from "react-hot-toast";
 
 export default function Cart() {
   const cartRef = useRef();
@@ -17,6 +19,26 @@ export default function Cart() {
     toggleCartItemQuantity,
     removeFromCart,
   } = useStateContext();
+
+  const handleCheckOut = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading("Redirecting...");
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <div
@@ -101,7 +123,10 @@ export default function Cart() {
             <div className="flex justify-center">
               <button
                 className="bg-brown-dark text-brown-light text-xl rounded-lg w-10/12 py-3 mt-6 hover:scale-110 transition-all"
-                onClick={() => setShowCart(false)}
+                onClick={() => {
+                  setShowCart(false);
+                  handleCheckOut();
+                }}
               >
                 Bayar Dengan Stripe
               </button>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import logo from "../public/logo.png";
 import { BsHandbag } from "react-icons/bs";
 import { useRouter } from "next/router";

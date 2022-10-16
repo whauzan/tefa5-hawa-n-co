@@ -23,6 +23,7 @@ export default function about() {
             name={"Haqila"}
             desc={"This is a block of text to provide more information about this section and why you should click the button."}
           />
+          
         </div>
     </div>
     

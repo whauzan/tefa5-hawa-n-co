@@ -1,6 +1,7 @@
-import { Card, HeroBanner } from "../components";
+import { Card, HeroBanner, Blog } from "../components";
 import { IoDiamondOutline } from "react-icons/io5";
 import { client } from "../lib/client";
+
 
 export default function Home({ products, banners }) {
   return (
@@ -23,6 +24,13 @@ export default function Home({ products, banners }) {
             />
           ))}
       </div>
+      <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center mt-10">
+        <h2 className="text-4xl font-Lora font-extrabold">Jewelry Blog</h2>
+        <p>Know more about Jewelry</p>
+          
+          
+      </div>
+      
     </div>
   );
 }

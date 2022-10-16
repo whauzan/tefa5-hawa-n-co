@@ -8,3 +8,4 @@
 body {
   @apply bg-white font-Sen;
 }
+.m-auto { margin: auto; }

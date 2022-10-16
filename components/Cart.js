@@ -81,6 +81,7 @@ export default function Cart() {
                 <img
                   className="w-1/4 h-1/4 rounded-xl bg-brown-light"
                   src={urlFor(item?.image[0])}
+                  alt={item?.name}
                 />
                 <div className="flex flex-col justify-between">
                   <div className="flex justify-between w-52 md:w-[350px] text-xl">

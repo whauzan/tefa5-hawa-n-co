@@ -28,7 +28,7 @@ export default function About() {
         <div className="flex flex-col items-center justify-center gap-y-2 text-brown-dark text-center mt-10">
           <h2 className="text-4xl font-Lora font-extrabold">Team</h2>
           <p>Descriptions</p>
-          <div className="flex flex-row gap-x-6 rounded-lg px-10 py-8 my-6">
+          <div className="flex flex-col lg:flex-row gap-6 rounded-lg px-8 lg:px-10 py-8 my-6">
             {teams.map((team) => (
               <CardBio key={team.name} team={team} />
             ))}

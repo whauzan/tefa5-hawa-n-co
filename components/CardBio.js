@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CardBio({ team }) {
   return (
-    <div className="flex flex-row gap-x-6 w-[35rem] max-w-md rounded-lg text-brown-dark">
+    <div className="flex flex-row gap-x-6 md:w-[40rem] lg:w-[30rem] rounded-lg text-brown-dark">
       <div className="flex flex-col justify-center items-center">
         <div className="w-20">
           <Image

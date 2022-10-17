@@ -42,6 +42,12 @@ export const StateContext = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    localStorage.setItem("totalQuantities", JSON.stringify(totalQuantities));
+  }, [cartItems, totalPrice, totalQuantities]);
+
   const addToCart = (product, quantity) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
@@ -51,15 +57,6 @@ export const StateContext = ({ children }) => {
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
-
-    localStorage.setItem(
-      "totalPrice",
-      JSON.stringify(totalPrice + product.price * quantity)
-    );
-    localStorage.setItem(
-      "totalQuantities",
-      JSON.stringify(totalQuantities + quantity)
-    );
 
     if (checkProductInCart) {
       const updatedCartItems = cartItems.map((cartProduct) => {
@@ -71,14 +68,8 @@ export const StateContext = ({ children }) => {
       });
 
       setCartItems(updatedCartItems);
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     } else {
-      product.quantity = quantity;
-      setCartItems([...cartItems, { ...product }]);
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify([...cartItems, product])
-      );
+      setCartItems([...cartItems, { ...product, quantity }]);
     }
 
     toast.success(`${qty} ${product.name} ditambahkan ke keranjang.`);
@@ -96,16 +87,6 @@ export const StateContext = ({ children }) => {
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
     setCartItems(newCartItems);
-
-    localStorage.setItem(
-      "totalPrice",
-      JSON.stringify(totalPrice - foundProduct.price * foundProduct.quantity)
-    );
-    localStorage.setItem(
-      "totalQuantities",
-      JSON.stringify(totalQuantities - foundProduct.quantity)
-    );
-    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   const toggleCartItemQuantity = (id, value) => {
@@ -119,22 +100,6 @@ export const StateContext = ({ children }) => {
       ]);
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify([
-          ...newCartItems,
-          { ...foundProduct, quantity: foundProduct.quantity + 1 },
-        ])
-      );
-      localStorage.setItem(
-        "totalPrice",
-        JSON.stringify(totalPrice + foundProduct.price)
-      );
-      localStorage.setItem(
-        "totalQuantities",
-        JSON.stringify(totalQuantities + 1)
-      );
     } else if (value === "dec") {
       if (foundProduct.quantity > 1) {
         setCartItems([
@@ -143,19 +108,6 @@ export const StateContext = ({ children }) => {
         ]);
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
-
-        localStorage.setItem(
-          "cartItems",
-          JSON.stringify([
-            ...newCartItems,
-            { ...foundProduct, quantity: foundProduct.quantity - 1 },
-          ])
-        );
-        localStorage.setItem(
-          "totalPrice",
-          JSON.stringify(totalPrice - foundProduct.price)
-        );
-        localStorage.setItem("totalQuantities", JSON.stringify(totalQuantities - 1));
       }
     }
   };

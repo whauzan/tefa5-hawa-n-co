@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../lib/client";
-import {
-  AiFillStar,
-  AiOutlineStar,
-} from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Card, Counter } from "../../components";
 import { useStateContext } from "../../context/StateContext";
+import Head from "next/head";
 
 export default function ProductDetails({ product, products }) {
   const { image, name, details, price } = product;
@@ -20,6 +18,9 @@ export default function ProductDetails({ product, products }) {
 
   return (
     <>
+      <Head>
+        <title>Product {name} - HaWa & co.</title>
+      </Head>
       <div className="flex flex-wrap md:flex-nowrap gap-10 mt-14 text-brown-primary">
         <div className="flex flex-col mx-auto">
           <div className="bg-brown-light hover:bg-brown-primary transition-all rounded-2xl cursor-pointer w-[350px] h-[350px] md:w-[400px] md:h-[400px]">
@@ -53,7 +54,11 @@ export default function ProductDetails({ product, products }) {
           </p>
           <div className="flex items-center gap-5 mt-6">
             <h4 className="font-semibold text-lg">Jumlah:</h4>
-            <Counter quantity={qty} increase={incrementQty} decrease={decrementQty} />
+            <Counter
+              quantity={qty}
+              increase={incrementQty}
+              decrease={decrementQty}
+            />
           </div>
           <div className="flex flex-row gap-4 mt-6">
             <button
@@ -78,9 +83,11 @@ export default function ProductDetails({ product, products }) {
         </h2>
         <div className="marquee">
           <div className="flex justify-center gap-4 mt-5 track">
-            {products.filter((item) => product.name !== item.name).map((item) => (
-              <Card key={item._id} product={item} />
-            ))}
+            {products
+              .filter((item) => product.name !== item.name)
+              .map((item) => (
+                <Card key={item._id} product={item} />
+              ))}
           </div>
         </div>
       </div>
@@ -110,7 +117,9 @@ export const getStaticProps = async ({ params: { slug } }) => {
     `*[_type == "product" && slug.current == '${slug}'][0]`
   );
 
-  const products = await client.fetch(`*[_type == "product" && category == '${product.category}']`);
+  const products = await client.fetch(
+    `*[_type == "product" && category == '${product.category}']`
+  );
   return {
     props: {
       product,

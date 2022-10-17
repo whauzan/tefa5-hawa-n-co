@@ -1,19 +1,25 @@
 import Image from "next/image";
-import react from "react";
+import React from "react";
 
-export default function CardBio({ image, name, desc }) {
+export default function CardBio({ team }) {
   return (
-  <div class=" flex w-[35rem] max-w-sm rounded-lg border border-gray-200 shadow-md bg-brown-secondary">
-    <div className="my-8 mx-10">
-      <img className=" rounded-full w-80" src={image} />
-      <div>
-        <h5 className="mt-2 text-xl font-medium dark:text-white">{name}</h5>
+    <div class="flex flex-row gap-x-6 w-[35rem] max-w-md rounded-lg text-brown-dark">
+      <div className="flex flex-col justify-center items-center">
+        <div className="w-20">
+          <Image
+            className="rounded-full"
+            src={team.image}
+            width={1080}
+            height={1080}
+          />
+        </div>
+        <div className="bg-brown-dark rounded-2xl py-0.5 px-5 mt-2">
+          <h5 className="font-semibold font-Lora text-brown-light">{team.name}</h5>
+        </div>
+      </div>
+      <div className="text-left">
+        <p className="">{team.desc}</p>
       </div>
     </div>
-
-    <div className="mt-6">
-      <p className="dark:text-white m-4">{desc}</p>
-    </div>
-  </div>
   );
 }

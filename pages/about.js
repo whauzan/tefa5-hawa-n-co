@@ -5,9 +5,9 @@ import { CardBio, Story } from "../components";
 export default function About() {
   const teams = [
     {
-      image: "/hawa.png",
+      image: "/aqila.jpg",
       name: "Haqila",
-      desc: "Seorang mahasiswa Informatika di Telkom University. Saat ini fokus mempelajari teknologi web dan mobile.",
+      desc: "Seorang mahasiswa Fakultas Informatika di Telkom University. Saat ini fokus mempelajari dan mengembangkan wawasan di bidang web programming khususnya Front-End Developer.",
     },
     {
       image: "/wahyu.jpg",

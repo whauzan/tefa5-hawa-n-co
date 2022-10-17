@@ -23,7 +23,7 @@ export default function ProductDetails({ product, products }) {
       </Head>
       <div className="flex flex-wrap md:flex-nowrap gap-10 mt-14 text-brown-primary">
         <div className="flex flex-col mx-auto">
-          <div className="bg-brown-light hover:bg-brown-primary transition-all rounded-2xl cursor-pointer w-[350px] h-[350px] md:w-[400px] md:h-[400px]">
+          <div className="bg-brown-light hover:bg-brown-primary transition-all rounded-2xl cursor-pointer w-[330px] h-[330px] md:w-[400px] md:h-[400px]">
             <img src={urlFor(image && image[index])} />
           </div>
           <div className="flex gap-3 mt-5">
@@ -62,13 +62,13 @@ export default function ProductDetails({ product, products }) {
           </div>
           <div className="flex flex-row gap-4 mt-6">
             <button
-              className="border border-brown-dark text-brown-dark text-lg rounded-md px-4 py-2 md:px-6 hover:scale-110 transition-transform"
+              className="border border-brown-dark text-brown-dark md:text-lg rounded-md px-4 py-2 md:px-6 hover:scale-110 transition-transform"
               onClick={() => addToCart(product, qty)}
             >
               Tambah ke Keranjang
             </button>
             <button
-              className="rounded-md px-4 py-2 md:px-6 bg-brown-dark text-lg text-brown-light hover:scale-110 transition-transform"
+              className="rounded-md px-4 py-2 md:px-6 bg-brown-dark md:text-lg text-brown-light hover:scale-110 transition-transform"
               onClick={handleBuyNow}
             >
               Beli Sekarang

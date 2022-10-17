@@ -25,7 +25,7 @@ export default function HeroBanner({ banners }) {
           {banners.buttonText}
         </button>
       </Link>
-      <div className="absolute bottom-[5%] right-[10%] w-80 flex flex-col text-brown-dark">
+      <div className="absolute bottom-[5%] right-[10%] w-72 md:w-80 flex flex-col text-brown-dark">
         <h5 className="mb-3 font-semibold self-end">Description</h5>
         <p className="font-thin text-brown-primary text-end">{banners.desc}</p>
       </div>

@@ -111,7 +111,7 @@ export default function Cart() {
             ))}
         </div>
         {cartItems.length >= 1 && (
-          <div className="p-8 md:px-16 md:py-8 absolute bottom-3 right-1 w-full">
+          <div className="p-8 md:px-16 md:py-4 absolute bottom-0 right-1 w-full">
             <div className="flex flex-row justify-between font-semibold text-2xl">
               <h3>Subtotal</h3>
               <h3>

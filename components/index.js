@@ -7,4 +7,6 @@ export { default as Counter } from "./Counter";
 export { default as Cart } from "./Cart";
 export { default as Sidebar } from "./Sidebar";
 export { default as CardBio } from "./CardBio";
+export { default as Blog } from "./Blog";
+export { default as Story } from "./Story";
 export { default as Footer } from "./Footer";

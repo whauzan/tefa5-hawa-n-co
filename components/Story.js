@@ -1,6 +1,6 @@
 export default function Story() {
   return (
-    <div className="mx-40 py-8 text-left rounded-lg text-brown-primary">
+    <div className="mx-10 md:mx-20 lg:mx-40 py-8 text-left rounded-lg text-brown-primary">
       {`HaWa & co., yang berdiri sejak tahun 2001, merupakan merek perhiasan profesional di bawah naungan PT Haqila Wahyu Indonesia (HWI), produsen perhiasan emas dan perak yang berbasis di Jakarta, Indonesia. HaWa & co. adalah merek yang berfokus pada desain dan produksi perhiasan emas dan perak yang berkualitas tinggi. HaWa & co. telah memenangkan berbagai penghargaan internasional, termasuk penghargaan “Best of the Best” di ajang “The International Jewellery London” (IJL) di London, Inggris, “The International Jewellery Hong Kong” (IJHK) di Hong Kong, dan “The International Jewellery Bangkok” (IJTB) di Bangkok, Thailand.`}
       <br />
       <br />
